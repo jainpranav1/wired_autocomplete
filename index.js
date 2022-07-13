@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 
-let person = "Tom Cruise";
+let person = "Taylor Swift";
 
 let prompts = [
   `who is ${person}`,
@@ -12,9 +12,6 @@ let prompts = [
   `what does ${person}`,
   `what was ${person}`,
   `what is ${person}`,
-  `who is ${person}`,
-  `who did ${person}`,
-  `who would ${person}`,
   `can ${person}`,
   `does ${person}`,
 ];
