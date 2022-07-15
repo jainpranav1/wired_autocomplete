@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
+const { chromium } = require("playwright");
 
-let person = "Taylor Swift";
+let person = "Jacksepticeye";
 
 let prompts = [
   `who is ${person}`,
@@ -17,14 +17,14 @@ let prompts = [
 ];
 
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto("https://google.com");
 
   for (let i = 0; i < prompts.length; ++i) {
     await page.goto("https://google.com");
     await page.type("[aria-label='Search']", prompts[i]);
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(2000);
     await page.screenshot({ path: `images/${i}.png` });
   }
 
