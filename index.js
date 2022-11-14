@@ -16,7 +16,7 @@ let prompts = [
   `does ${person}`,
 ];
 
-(async () => {
+async function main() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto("https://google.com");
@@ -29,4 +29,6 @@ let prompts = [
   }
 
   await browser.close();
-})();
+}
+
+main();
