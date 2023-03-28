@@ -17,18 +17,24 @@ let prompts = [
 ];
 
 async function main() {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
-  await page.goto("https://google.com");
-
-  for (let i = 0; i < prompts.length; ++i) {
+  try {
+    const browser = await chromium.launch();
+    const page = await browser.newPage();
     await page.goto("https://google.com");
-    await page.type("[aria-label='Search']", prompts[i]);
-    await page.waitForTimeout(2000);
-    await page.screenshot({ path: `images/${i}.png` });
-  }
 
-  await browser.close();
+    for (let i = 0; i < prompts.length; ++i) {
+      await page.goto("https://google.com");
+      await page.type("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input", prompts[i]);
+      await page.waitForTimeout(2000);
+      await page.screenshot({ path: `images/${i}.png` });
+    }
+
+    await browser.close();
+  }
+  catch (error) {
+    console.log(error)
+  }
 }
 
 main();
+
